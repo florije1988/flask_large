@@ -9,6 +9,7 @@ class TaskService(BaseService):
         new_task = TaskModel(title=params.get('title'), content=params.get('content'))
         self.db.add(new_task)
         self.flush()
+        return new_task
 
     @staticmethod
     def get_tasks():
