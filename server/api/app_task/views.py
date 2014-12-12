@@ -9,7 +9,6 @@ from ..basic_handler import BaseHandler
 from ..custom_exception import InvalidAPIUsage
 
 
-
 @app_task.before_app_request
 def log_request_data():
     current_app.logger.warning(
