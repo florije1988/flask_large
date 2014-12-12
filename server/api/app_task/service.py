@@ -18,10 +18,16 @@ class TaskService(BaseService):
 
     @staticmethod
     def get_tasks():
-        res_task = TaskModel.query().all()
-        return res_task
+        res_task = TaskModel.query.all()
+        task_ma = TaskSchema().dump(res_task, many=True)
+        if task_ma.errors:
+            raise InvalidAPIUsage(message=task_ma.errors)
+        return task_ma.data
 
     @staticmethod
     def get_task_by_id(task_id):
-        res_task = TaskModel.query().filter(id=task_id).first()
-        return res_task
+        res_task = TaskModel.query.filter(TaskModel.id == task_id).first()
+        task_ma = TaskSchema().dump(res_task)
+        if task_ma.errors:
+            raise InvalidAPIUsage(message=task_ma.errors)
+        return task_ma.data

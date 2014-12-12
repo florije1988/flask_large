@@ -18,3 +18,6 @@ class TaskModel(BaseModel):
     def __init__(self, title, content):
         self.title = title
         self.content = content
+
+    def __repr__(self):
+        return '<Task title is %r, content is %r>' % (self.title, self.content)
