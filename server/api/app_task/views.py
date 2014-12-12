@@ -20,13 +20,6 @@ class IndexHandler(BaseHandler):
         return self.json_output(data={'data': 'Hello, World!'})
 
 
-class InitDBHandler(BaseHandler):
-    def get(self):
-        with TaskService() as task_service:
-            res = task_service.init()
-        return self.json_output(data={'db': res})
-
-
 class TaskHandler(BaseHandler):
     def get(self):
         tasks = [

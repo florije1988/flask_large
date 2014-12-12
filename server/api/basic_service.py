@@ -18,6 +18,3 @@ class BaseService(object):
 
     def flush(self):
         self.db.flush()
-
-    def init_db(self):
-        db.create_all()

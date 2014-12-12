@@ -4,10 +4,6 @@ from ..basic_service import BaseService
 
 
 class TaskService(BaseService):
-    def init(self):
-        self.init_db()
-        return True
-
     def create_task(self, **params):
         pass
 
