@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 __author__ = 'florije'
 import os
-from api import create_app, db
+from api import create_app
+from api.models import db
 from api.models import TaskModel
 from flask.ext.script import Manager, Shell, Server
 from flask.ext.migrate import Migrate, MigrateCommand
@@ -24,11 +25,11 @@ manager.add_command('db', MigrateCommand)
 
 
 @manager.command
-def createdb():
+def create_db():
     from api import db
 
     db.create_all()
 
 
 if __name__ == '__main__':
-    manager.run()
+    manager.run()  # runserver -p 5000 -h 127.0.0.1
