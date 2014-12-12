@@ -24,7 +24,7 @@ class IndexHandler(BaseHandler):
 class FaviconHandler(BaseHandler):
     def get(self):
         # return send_from_directory('static', 'favicon.ico', mimetype='image/vnd.microsoft.icon')
-        return url_for('static', filename='favicon.ico')
+        return self.json_output(data={'pic': '/static/favicon.ico'})
 
 
 class TaskHandler(BaseHandler):
