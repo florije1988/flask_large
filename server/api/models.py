@@ -11,7 +11,7 @@ class BaseModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
 
-class User(BaseModel):
+class UserModel(BaseModel):
     __tablename__ = 'users'
 
     email = db.Column(db.String(120), unique=True, nullable=False, info={'validators': Email()})
