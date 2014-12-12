@@ -9,4 +9,5 @@ api_task = Api(app_task, catch_all_404s=True)
 from . import views
 
 api_task.add_resource(views.IndexHandler, '/')
+api_task.add_resource(views.InitDBHandler, '/init')
 api_task.add_resource(views.TaskHandler, '/tasks')

@@ -12,4 +12,9 @@ class BaseModel(db.Model):
 class TaskModel(BaseModel):
     __tablename__ = 'tasks'
 
-    content = db.Column(db.String(50), default='')
+    title = db.Column(db.String(length=20), default='')
+    content = db.Column(db.String(length=50), default='')
+
+    def __init__(self, title, content):
+        self.title = title
+        self.content = content

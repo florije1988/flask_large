@@ -6,6 +6,9 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
+    def __init__(self):
+        pass
+
     DEBUG = False
     TESTING = False
 
@@ -15,8 +18,8 @@ class Config:
     APP_DEBUG = True
     HOST = 'localhost'
     PORT = 5000
-    LOG_PATH = 'lukker_logs'
-    LOG_NAME = 'lukker_logs.log'
+    LOG_PATH = 'logs'
+    LOG_NAME = 'proj_logs.log'
 
     @staticmethod
     def init_app(app):
@@ -25,8 +28,8 @@ class Config:
 
 class DevelopmentConfig(Config):
     # DEBUG = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
-                              'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or 'sqlite:///' + os.path.join(basedir,
+                                                                                                'data-dev.sqlite')
 
 
 class TestingConfig(Config):
