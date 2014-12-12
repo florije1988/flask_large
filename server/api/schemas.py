@@ -8,8 +8,3 @@ class TaskSchema(ma.Schema):
     class Meta:
         # Fields to expose
         fields = ('id', 'title', 'content')
-
-
-class TaskListSchema(ma.Schema):
-    # task_list = fields.Nested(TaskSchema)
-    pass
