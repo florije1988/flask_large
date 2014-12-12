@@ -4,8 +4,10 @@ import os
 from ..basic_handler import BaseHandler
 from service import TaskService
 from . import app_task
-from flask import current_app, request, send_from_directory, redirect, url_for
+from flask import current_app, request
 from datetime import datetime
+from flask.ext.restful import reqparse
+from ..custom_exception import InvalidAPIUsage
 
 
 @app_task.before_app_request
@@ -29,19 +31,38 @@ class FaviconHandler(BaseHandler):
 
 class TaskHandler(BaseHandler):
     def get(self):
-        tasks = [
-            {
-                'id': 1,
-                'title': u'Buy groceries',
-                'description': u'Milk, Cheese, Pizza, Fruit, Tylenol',
-                'done': False
-            },
-            {
-                'id': 2,
-                'title': u'Learn Python',
-                'description': u'Need to find a good Python tutorial on the web',
-                'done': False
-            }
-        ]
+        # tasks = [
+        #     {
+        #         'id': 1,
+        #         'title': u'Buy groceries',
+        #         'description': u'Milk, Cheese, Pizza, Fruit, Tylenol',
+        #         'done': False
+        #     },
+        #     {
+        #         'id': 2,
+        #         'title': u'Learn Python',
+        #         'description': u'Need to find a good Python tutorial on the web',
+        #         'done': False
+        #     }
+        # ]
+        #
+        # return self.json_output(data=tasks)
+        with TaskService() as task_service:
+            task_service.get_task_by_id(task_id=task_id)
 
-        return self.json_output(data=tasks)
+    def post(self):
+        if not request.data:
+            raise InvalidAPIUsage(message='Request data type is error!')
+        parser = reqparse.RequestParser()
+        parser.add_argument('title', type=str, required=True, help="title cannot be blank!", location='json')
+        parser.add_argument('content', type=str, required=True, help="content cannot be blank!", location='json')
+        args = parser.parse_args()
+
+        with TaskService() as task_service:
+            task_service.create_task(**args)
+
+
+
+class TaskListHandler(BaseHandler):
+    def get(self):
+        pass
