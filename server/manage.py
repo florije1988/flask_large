@@ -10,8 +10,8 @@ from flask.ext.migrate import Migrate, MigrateCommand
 app = create_app(os.getenv('FLASK_CONFIG') or 'development')
 
 manager = Manager(app)
-# manager.add_command("runserver", Server())
-# manager.add_command("shell", Shell())
+manager.add_command("runserver", Server())
+manager.add_command("shell", Shell())
 
 migrate = Migrate(app, db)
 
