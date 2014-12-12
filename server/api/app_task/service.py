@@ -10,11 +10,13 @@ class TaskService(BaseService):
         self.db.add(new_task)
         self.flush()
 
-    def get_tasks(self):
+    @staticmethod
+    def get_tasks():
         res_task = TaskModel.query().all()
         return res_task
 
-    def get_task_by_id(self, task_id):
+    @staticmethod
+    def get_task_by_id(task_id):
         res_task = TaskModel.query().filter(id=task_id).first()
         return res_task
 
