@@ -11,8 +11,10 @@ class TaskService(BaseService):
         self.flush()
 
     def get_tasks(self):
-        pass
+        res_task = TaskModel.query().all()
+        return res_task
 
     def get_task_by_id(self, task_id):
-        pass
+        res_task = TaskModel.query().filter(id=task_id).first()
+        return res_task
 
