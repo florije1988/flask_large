@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 __author__ = 'florije'
-from ..basic_service import BaseService
-from ..models import TaskModel
-from ..schemas import TaskSchema
-from ..custom_exception import InvalidAPIUsage
+from api.basic_service import BaseService
+from api.models import TaskModel
+from api.schemas import TaskSchema
+from api.custom_exception import InvalidAPIUsage
 
 
 class TaskService(BaseService):

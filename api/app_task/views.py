@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 __author__ = 'florije'
-from service import TaskService
-from flask import current_app, request
 from datetime import datetime
+
+from flask import current_app, request
 from flask.ext.restful import reqparse
+
+from service import TaskService
 from . import app_task
 from ..basic_handler import BaseHandler
-from ..custom_exception import InvalidAPIUsage
+from api.custom_exception import InvalidAPIUsage
 
 
 @app_task.before_app_request

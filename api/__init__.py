@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 __author__ = 'florije'
+import logging
+from logging.handlers import TimedRotatingFileHandler
+
 from flask import Flask
-from server.config import config
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.marshmallow import Marshmallow
 
-import logging
-from logging.handlers import TimedRotatingFileHandler
+from config import config
+
 
 db = SQLAlchemy()
 ma = Marshmallow()
@@ -24,7 +26,7 @@ def create_app(config_name):
     ma.init_app(app=app)
 
     # main module
-    from app_task import app_task as app_task_blueprint
+    from api import app_task as app_task_blueprint
 
     app.register_blueprint(app_task_blueprint, )  # url_prefix='/task'
 

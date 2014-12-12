@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 __author__ = 'florije'
 import os
+
+from flask.ext.script import Manager, Shell, Server
+from flask.ext.migrate import Migrate, MigrateCommand
+
 from api import create_app
 from api.models import db
 from api.models import TaskModel
-from flask.ext.script import Manager, Shell, Server
-from flask.ext.migrate import Migrate, MigrateCommand
+
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'development')
 
