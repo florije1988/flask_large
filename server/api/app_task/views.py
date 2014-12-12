@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 __author__ = 'florije'
-from ..basic_handler import BaseHandler
 from service import TaskService
-from . import app_task
 from flask import current_app, request
 from datetime import datetime
 from flask.ext.restful import reqparse
+from . import app_task
+from ..basic_handler import BaseHandler
 from ..custom_exception import InvalidAPIUsage
+
 
 
 @app_task.before_app_request
@@ -74,7 +75,7 @@ class TaskHandler(BaseHandler):
         with TaskService() as task_service:
             new_task = task_service.create_task(**args)
 
-        self.json_output(data=new_task)
+        return self.json_output(data=new_task)
 
 
 class TaskListHandler(BaseHandler):

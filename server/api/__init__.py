@@ -3,11 +3,13 @@ __author__ = 'florije'
 from flask import Flask
 from server.config import config
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.marshmallow import Marshmallow
 
 import logging
 from logging.handlers import TimedRotatingFileHandler
 
 db = SQLAlchemy()
+ma = Marshmallow()
 
 
 def create_app(config_name):
@@ -19,6 +21,7 @@ def create_app(config_name):
     # print app.config.get('HOST')
 
     db.init_app(app)
+    ma.init_app(app=app)
 
     # main module
     from app_task import app_task as app_task_blueprint

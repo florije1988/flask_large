@@ -2,6 +2,8 @@
 __author__ = 'florije'
 from ..basic_service import BaseService
 from ..models import TaskModel
+from ..schemas import TaskSchema
+from ..custom_exception import InvalidAPIUsage
 
 
 class TaskService(BaseService):
@@ -9,7 +11,10 @@ class TaskService(BaseService):
         new_task = TaskModel(title=params.get('title'), content=params.get('content'))
         self.db.add(new_task)
         self.flush()
-        return new_task
+        task_ma = TaskSchema().dump(new_task)
+        if task_ma.errors:
+            raise InvalidAPIUsage(message=task_ma.errors)
+        return task_ma.data
 
     @staticmethod
     def get_tasks():
