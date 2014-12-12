@@ -19,4 +19,3 @@ class TaskService(BaseService):
     def get_task_by_id(task_id):
         res_task = TaskModel.query().filter(id=task_id).first()
         return res_task
-
