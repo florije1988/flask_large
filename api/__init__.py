@@ -26,7 +26,7 @@ def create_app(config_name):
     ma.init_app(app=app)
 
     # main module
-    from api import app_task as app_task_blueprint
+    from api.app_task import app_task as app_task_blueprint
 
     app.register_blueprint(app_task_blueprint, )  # url_prefix='/task'
 

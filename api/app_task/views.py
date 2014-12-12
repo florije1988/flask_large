@@ -3,7 +3,7 @@ __author__ = 'florije'
 import os
 from datetime import datetime
 
-from flask import current_app, request, send_from_directory
+from flask import current_app, request, send_from_directory, render_template
 from flask.ext.restful import reqparse
 
 from service import TaskService
@@ -22,7 +22,8 @@ def log_request_data():
 
 class IndexHandler(BaseHandler):
     def get(self):
-        return self.json_output(data={'data': 'Hello, World!'})
+        # return self.json_output(data={'data': 'Hello, World!'})
+        return render_template('index.html')
 
 
 class FaviconHandler(BaseHandler):
