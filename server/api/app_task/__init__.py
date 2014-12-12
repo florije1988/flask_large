@@ -10,4 +10,5 @@ from . import views
 
 api_task.add_resource(views.IndexHandler, '/')
 api_task.add_resource(views.FaviconHandler, '/favicon.ico')
-api_task.add_resource(views.TaskHandler, '/tasks')
+api_task.add_resource(views.TaskHandler, '/task')
+api_task.add_resource(views.TaskListHandler, '/tasks')
