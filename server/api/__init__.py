@@ -23,7 +23,7 @@ def create_app(config_name):
     # main module
     from app_task import app_task as app_task_blueprint
 
-    app.register_blueprint(app_task_blueprint, url_prefix='/task')
+    app.register_blueprint(app_task_blueprint, )  # url_prefix='/task'
 
     handler = TimedRotatingFileHandler(
         filename='{0}/{1}'.format(app.config.get('LOG_PATH'), app.config.get('LOG_NAME')), when='D',

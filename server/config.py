@@ -10,9 +10,6 @@ class Config:
     TESTING = False
 
     SQLALCHEMY_ECHO = True
-    SQLALCHEMY_POOL_SIZE = 5
-    SQLALCHEMY_POOL_TIMEOUT = 10
-    SQLALCHEMY_POOL_RECYCLE = 7200
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
 
     APP_DEBUG = True
@@ -30,19 +27,15 @@ class DevelopmentConfig(Config):
     # DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
                               'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
-    # SQLALCHEMY_DATABASE_URI = 'mysql://root:903326@localhost/lukker'
 
 
 class TestingConfig(Config):
     TESTING = True
-    # SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL') or \
-    # 'sqlite:///' + os.path.join(basedir, 'data-test.sqlite')
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:903326@localhost/sns_florije'
+    SQLALCHEMY_DATABASE_URI = ''
 
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-                              'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+    SQLALCHEMY_DATABASE_URI = ''
 
 
 config = {
