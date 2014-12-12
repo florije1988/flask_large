@@ -8,7 +8,7 @@ api_task = Api(app_task, catch_all_404s=True)
 
 from api.app_task import views
 
-api_task.add_resource(views.IndexHandler, '/')
+# api_task.add_resource(views.IndexHandler, '/')
 api_task.add_resource(views.FaviconHandler, '/favicon.ico')
 api_task.add_resource(views.TaskHandler, '/task')
 api_task.add_resource(views.TaskListHandler, '/tasks')

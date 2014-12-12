@@ -23,7 +23,7 @@ def log_request_data():
 class IndexHandler(BaseHandler):
     def get(self):
         # return self.json_output(data={'data': 'Hello, World!'})
-        return render_template('index.html')
+        return render_template('index_task.html')
 
 
 class FaviconHandler(BaseHandler):
