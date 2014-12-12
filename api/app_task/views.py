@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 __author__ = 'florije'
+import os
 from datetime import datetime
 
-from flask import current_app, request
+from flask import current_app, request, send_from_directory
 from flask.ext.restful import reqparse
 
 from service import TaskService
@@ -27,7 +28,8 @@ class IndexHandler(BaseHandler):
 class FaviconHandler(BaseHandler):
     def get(self):
         # return send_from_directory('static', 'favicon.ico', mimetype='image/vnd.microsoft.icon')
-        return self.json_output(data={'pic': '/static/favicon.ico'})
+        # return self.json_output(data={'pic': '/static/favicon.ico'})
+        return send_from_directory(os.path.join(current_app.root_path, 'static'), 'img/favicon.ico')
 
 
 class TaskHandler(BaseHandler):
