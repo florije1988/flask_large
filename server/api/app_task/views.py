@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 __author__ = 'florije'
-import os
 from ..basic_handler import BaseHandler
 from service import TaskService
 from . import app_task
